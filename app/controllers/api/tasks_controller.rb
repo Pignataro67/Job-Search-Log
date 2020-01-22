@@ -7,29 +7,37 @@ class API::TasksController < ApplicationController
   end
   
   def show
-    render json: @task
+    if @task
+      render json: { staus: "success", task: @task }, status: 200
+     else
+      render json: { status: "error", message: "Resource not found." }, status: 404
+     end
   end
  
   def create
     @task = Task.new(task_params)
   
     if @task.save
-      render json: @task, status: :created, location: @task
+      render json: { status: "success", task: @task }, status: 200
     else
-      render json: @task.errors, status: :unprocessable_entity
+      render json: status: "error", message: @task.errors }, status: 400
     end
   end
 
   def update
     if @task.update(task_params)
-      render json: @task
+      render json: @task, status: 200
     else
-      render json: @task.errors, status: :unprocessable_entity
+      render json: message: @task.errors }, status: 400
     end
   end
 
   def destroy
-    @task.destroy
+    if @task.destroy
+      render status: 204
+    else
+      render json: { message: "Unable to remove."}, status: 404
+    end
   end
   
   private

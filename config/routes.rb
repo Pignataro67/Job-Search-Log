@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'application#index'
+  # root to: 'application#index'
   namespace :api do
     resources :tasks
     resources :types
