@@ -1,5 +1,8 @@
 import fetch from 'isomorphic-fetch';
-export const FETCH_TASKS = 'fetch_tasks';
+require('es6-promise').polyfill();
+export const FETCH_TASKS = 'FETCH_TASKS';
+export const RECEIVED_TASKS = 'RECEIVED_TASKS';
+
 const ROOT_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
 
 export function fetchTasks() {
