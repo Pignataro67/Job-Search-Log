@@ -12,9 +12,10 @@ class TasksContainer extends Component {
   renderTasks = () => {
     return _.map(this.props.tasks, task => {
       return (
-        <li className="list-group-item" key={task.id}>
-          {task.name}
-        </li>
+        <TaskItem
+          key={task.id}
+          task={task}
+        />
       );
     });
   }
@@ -24,9 +25,9 @@ class TasksContainer extends Component {
     return (
       <div>
          <h3>Tasks</h3>
-        <ul className="list-group">
+        <ol className="list-group">
           {this.renderTasks()}
-        </ul>
+        </ol>
       </div>	     
     );	    
   };	  
