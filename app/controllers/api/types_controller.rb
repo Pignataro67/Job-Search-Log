@@ -1,4 +1,4 @@
-class API::TypesController < ApplicationController
+class Api::TypesController < ApiController
   def index
     @types = Type.all
     

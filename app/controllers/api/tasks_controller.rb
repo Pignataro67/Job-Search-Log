@@ -1,4 +1,4 @@
-class API::TasksController < ApplicationController
+class Api::TasksController < ApiController
   before_action :set_task, only: [:show, :update, :destroy]
 
   def index
