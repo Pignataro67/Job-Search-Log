@@ -12,7 +12,7 @@ export function fetchTasks() {
       .then(response => response.json())
       .then(json => {
         console.log(json)
-        dispatch({type: RECEIVED_TASKS, payload: json.tasks})
+        dispatch({type: RECEIVED_TASKS, payload: json})
       })
   };
 }
