@@ -5,8 +5,9 @@ const TaskItem = ({ task }) => {
   const { name } = task;
   return (
     <div>
-      <h3>{name}</h3>
-      <Link to >&#8680;</Link>
+      <h3>{name}
+        <Link to={`tasks/${task.id}`} >&#8680;</Link>
+      </h3>
     </div>
   )
 
