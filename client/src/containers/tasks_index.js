@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchTasks } from '../actions/index';
 import TaskItem from '../components/task_item';
 
-class TasksContainer extends Component {
+class TasksIndex extends Component {
   componentDidMount = () => {
     this.props.fetchTasks();
   }
@@ -39,4 +39,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchTasks })(TasksContainer);
+export default connect(mapStateToProps, { fetchTasks })(TasksIndex);
