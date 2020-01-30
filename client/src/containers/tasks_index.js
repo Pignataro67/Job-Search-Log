@@ -21,7 +21,7 @@ class TasksIndex extends Component {
   }
 
   render() {
-    console.log(this.props.tasks)
+  
     return (
       <div>
          <h3>Tasks</h3>

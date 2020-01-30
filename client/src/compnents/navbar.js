@@ -2,11 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () =>
-  <div className="navbar">
+  <div className="navbar-right">
     <div>
       <NavLink
         to="/"
         exact
+        className="btn btn-primary"
         activeStyle={{
           background: 'grey'
         }}
@@ -14,6 +15,7 @@ const NavBar = () =>
       <NavLink
         to="/tasks/new"
         exact
+        className="btn btn-primary"
         activeStyle={{
           background: 'darkblue'
         }}
