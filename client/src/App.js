@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TasksIndex from './containers/tasks_index';
 import TasksNew from './containers/tasks_new';
 import NavBar from './components/navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Hello extends Component {
   render() {return <div>Hello!</div>}
