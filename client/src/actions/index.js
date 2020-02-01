@@ -19,14 +19,18 @@ export function fetchTasks() {
 
 export function createTask(values) {
   return (dispatch) => {
-    fetch(`${ROOT_URL}/tasks`, {
+    fetch('http://localhost:3000/api/', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: {
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify(values),
     })
       .then(response => response.json())
-        .then(json => dispatch({ type: CREATE_TASK, payload: json }))
-  }
+        .then(json => { 
+          dispatch({ type: CREATE_TASK, payload: json })
+    })
+  };
 }
