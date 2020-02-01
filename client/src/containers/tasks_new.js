@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createTask } from '../actions';
 
 class TasksNew extends Component {
 
@@ -23,7 +25,7 @@ class TasksNew extends Component {
   }
 
   onSubmit(values) {
-    console.log(values);
+    this.props.createTask(values)
   }
 
   render() {
@@ -62,4 +64,4 @@ const errors = {};
   return errors;
 }
 
-export default reduxForm({ validate, form: 'TasksNewForm' })(TasksNew);
+export default reduxForm({ validate, form: 'TasksNewForm' })(connect(null,{ createTask })(TasksNew));
