@@ -17,7 +17,7 @@ export function fetchTasks() {
   };
 }
 
-export function createTask(values) {
+export function createTask(values, callback) {
   return (dispatch) => {
     fetch('http://localhost:3000/api/', {
       method: 'POST',
@@ -32,5 +32,6 @@ export function createTask(values) {
         .then(json => { 
           dispatch({ type: CREATE_TASK, payload: json })
     })
+    .then(() => callback())
   };
 }

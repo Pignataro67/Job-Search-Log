@@ -25,7 +25,9 @@ class TasksNew extends Component {
   }
 
   onSubmit(values) {
-    this.props.createTask(values)
+    this.props.createTask(values, () => {
+      this.props.history.push('/');
+    });
   }
 
   render() {
