@@ -3,7 +3,8 @@ require('es6-promise').polyfill();
 export const FETCH_TASKS = 'FETCH_TASKS';
 export const RECEIVED_TASKS = 'RECEIVED_TASKS';
 export const CREATE_TASK = 'CREATE_TASK';
-export const FETCH_SELECTED_TASK = 'FETCH_SELECTED_TASK';
+export const FETCH_TASK = 'FETCH_TASK';
+export const RECEIVED_TASK = 'RECEIVED_TASK';
 
 const ROOT_URL = 'http://localhost:3001/api';
 
@@ -37,13 +38,13 @@ export function createTask(values, callback) {
   };
 }
 
-export function fetchSelectedTask(id) {
+export function fetchTask(id) {
   return (dispatch) => {
     dispatch({type: FETCH_TASK});
     fetch(`${ROOT_URL}/tasks/${id}`)
       .then(response => response.json())
       .then(json => {
-        dispatch({ type: FETCH_SELECTED_TASK, payload: json })
+        dispatch({ type: RECEIVED_TASK, payload: json.task })
       })
   };
 }

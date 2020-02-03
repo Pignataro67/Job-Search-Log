@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSelectedTask } from '../actions';
+import { fetchTask } from '../actions';
 
 class TasksShow extends Component {
 
   componentDidMount() {
-    this.props.fetchSelectedTask(this.props.match);
+    this.props.fetchTask(this.props.match.params.id);
   }
 
   render() {
@@ -25,7 +25,7 @@ class TasksShow extends Component {
 }
 
 function mapStateToProps({ tasks }, ownProps) {
-  return { selectedTask: tasks[ownProps.match.params.id] };
+  return { task: tasks[ownProps.match.params.id] };
 }
   
-export default connect(mapStateToProps, { fetchSelectedTask })(TasksShow);
+export default connect(mapStateToProps, { fetchTask })(TasksShow);
