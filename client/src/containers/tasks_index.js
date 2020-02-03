@@ -35,7 +35,7 @@ class TasksIndex extends Component {
 
 function mapStateToProps(state) {
   return {
-    tasks: state.tasks.list
+    tasks: state.tasks
   };
 }
 

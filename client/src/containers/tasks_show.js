@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchSelectedTask } from '../actions';
 
 class TasksShow extends Component {
+
+  componentDidMount() {
+    this.props.fetchSelectedTask(this.props.match);
+  }
+
   render() {
+    const { task } = this.props;
+
+    if (!task) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div>
-        Tasks Show Page
+        <h3>{task.name}</h3>
+        <h4>{task.description}</h4>
       </div>
-    )
+    );
   }
 }
 
-export default TasksShow;
+function mapStateToProps({ tasks }, ownProps) {
+  return { selectedTask: tasks[ownProps.match.params.id] };
+}
+  
+export default connect(mapStateToProps, { fetchSelectedTask })(TasksShow);
