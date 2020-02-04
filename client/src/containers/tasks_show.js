@@ -14,7 +14,9 @@ class TasksShow extends Component {
 
   onDeleteClick() {
     const { id } = this.props.match.params
-    this.props.deleteTask(id);
+    this.props.deleteTask(id, () => { 
+        this.props.history.push('/');
+      });
   }
   
   render() {
@@ -28,7 +30,7 @@ class TasksShow extends Component {
       <div>
         <Link to="/" className="btn btn-primary">Back To Index</Link>
         <button
-          className="btn btn-dander pull-xs-right"
+          className="btn btn-danger pull-xs-right"
           onClick={this.onDeleteClick.bind(this)}
         >
           Delete Task
