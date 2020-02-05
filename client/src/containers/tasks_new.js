@@ -24,6 +24,20 @@ class TasksNew extends Component {
     )
   }
 
+
+  renderNotesField(field){
+    return (
+      <div className="form-group">
+        <input
+          placeholder="Notes(optional)"
+          className="form-control"
+          type="textarea"
+          {...field.input}
+        />
+      </div>
+    )
+  }
+
   onSubmit(values) {
     this.props.createTask(values, () => {
       this.props.history.push('/');
@@ -35,6 +49,10 @@ class TasksNew extends Component {
     const { handleSubmit } = this.props;
 
     return (
+      <div className="container">
+        <div className="row">
+          <br />
+          <h3>Add a New Task</h3>
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Name"
@@ -46,9 +64,18 @@ class TasksNew extends Component {
           name="description"
           component={this.renderField}
         />
+        <Field
+          name="notes"
+          component="textarea"
+          placeholder="Optional Notes"
+        />
+        <br />
+        <br />
         <button type="submit" className="btn btn-primary">Save</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
+    </div>
+    </div>
     )
   }
 }
