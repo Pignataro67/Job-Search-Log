@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { FETCH_TASK, RECEIVED_TASK, FETCH_TASKS, RECEIVED_TASKS } from '../actions';
+import { FETCH_TASK, RECEIVED_TASK, FETCH_TASKS, RECEIVED_TASKS, DELETE_TASK } from '../actions';
 
 export default function(state = {}, action) {
 
@@ -12,6 +12,8 @@ export default function(state = {}, action) {
       return {...state}  
     case RECEIVED_TASKS:
       return  _.mapKeys(action.payload, 'id')
+    case DELETE_TASK:
+      return _.omit(state, action.payload)
     default:
       return state;
   }
