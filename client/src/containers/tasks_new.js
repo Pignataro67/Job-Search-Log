@@ -6,16 +6,16 @@ import { createTask } from '../actions';
 
 class TasksNew extends Component {
 
-  renderField(field){
-    const { meta } = field;
+  renderTextField(field){
+    const { input, label, meta } = field;
     const className = `form-group ${meta.touched && meta.error ? 'has-danger': '' }`;
     return (
       <div className={className}>  
         <input
-          placeholder={field.label}
+          placeholder={label}
           className="form-control"
           type="text"
-          {...field.input}   
+          {...input}   
         />
         <div className="text-help">
           {meta.touched ? meta.error : ''}
@@ -24,14 +24,14 @@ class TasksNew extends Component {
     )
   }
 
-
-  renderNotesField(field){
+  renderTextAreaField(field){
     return (
       <div className="form-group">
-        <input
-          placeholder="Notes(optional)"
+        <textarea
+          placeholder={field.label}
           className="form-control"
           type="textarea"
+          rows="5"
           {...field.input}
         />
       </div>
@@ -57,17 +57,17 @@ class TasksNew extends Component {
         <Field
           label="Name"
           name="name"
-          component={this.renderField}
+          component={this.renderTextField}
         />
         <Field
           label="Description"
           name="description"
-          component={this.renderField}
+          component={this.renderTextField}
         />
         <Field
+          label="Optional Notes"
           name="notes"
-          component="textarea"
-          placeholder="Optional Notes"
+          component="textAreaField"
         />
         <br />
         <br />

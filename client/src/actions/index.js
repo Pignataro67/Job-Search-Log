@@ -22,6 +22,7 @@ export function fetchTasks() {
 }
 
 export function createTask(values, callback) {
+  console.log(values)
   return (dispatch) => {
     fetch(`${ROOT_URL}/tasks`, {
       method: 'POST',
