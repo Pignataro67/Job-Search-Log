@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, change } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createTask } from '../actions';
+import moment from 'moment';
+import DatePicker from 'react-datepicker';
 
 class TasksNew extends Component {
 
@@ -38,6 +40,15 @@ class TasksNew extends Component {
     )
   }
 
+  renderDatePicker({ input, label, meta: { touched, error } }) {
+    return (
+      <DatePicker
+        {...input}
+        className="form-control"
+      />
+    );
+  }
+
   onSubmit(values) {
     this.props.createTask(values, () => {
       this.props.history.push('/');
@@ -50,7 +61,7 @@ class TasksNew extends Component {
 
     return (
       <div className="container">
-        <div className="row">
+        <div>
           <br />
           <h3>Add a New Task</h3>
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -58,6 +69,12 @@ class TasksNew extends Component {
           label="Name"
           name="name"
           component={this.renderTextField}
+        />
+        <Field
+          label="Date"
+          name="date"
+          dateFormat = 'MMM Do YY'
+          component={this.renderDatePicker}
         />
         <Field
           label="Description"
