@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TasksIndex from './containers/tasks_index';
-import TasksNew from './containers/tasks_new';
+import TasksForm from './containers/tasks_form';
 import NavBar from './components/navbar';
 import TasksShow from './containers/tasks_show';
 
@@ -17,7 +17,7 @@ class App extends Component {
           <div className="routes">
             <NavBar />
             <Switch>
-              <Route exact path="/tasks/new" component={ TasksNew } />
+              <Route exact path="/tasks/new" component={ TasksForm } />
               <Route path="/tasks/:id" component={ TasksShow } />
               <Route exact path="/" component={ TasksIndex } />
             </Switch>  
