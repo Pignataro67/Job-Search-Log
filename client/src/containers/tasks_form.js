@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createTask, fetchTypes } from '../actions';
-
+import { fetchTypes } from '../actions';
 
 class TasksForm extends Component {
   constructor(){
@@ -17,6 +17,10 @@ class TasksForm extends Component {
       date: '',
       type_id: ''
     }
+  }
+
+  componentDidMount() {
+    this.props.fetchTypes();
   }
 
   handleOnChange = event => {
@@ -69,6 +73,16 @@ class TasksForm extends Component {
                   value={ this.state.description }
                   required
               />
+            </div>
+
+            <div className="form-group">
+              <select
+                required
+                className="custom-select"
+                onChange={this.handleOnChange}>
+                <option defaultValue>Select Type</option>
+                {teachers.map(( type,index ) => <option key={ index } value={ type.id }>{ type.name }</option>)}
+              </select>
             </div>
 
             <div className="form-group">

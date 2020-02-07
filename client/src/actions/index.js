@@ -6,6 +6,8 @@ export const CREATE_TASK = 'CREATE_TASK';
 export const FETCH_TASK = 'FETCH_TASK';
 export const RECEIVED_TASK = 'RECEIVED_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
+export const FETCH_TYPES = 'FETCH_TYPES';
+export const RECEIVED_TYPES = 'RECEIVED_TYPES';
 
 const ROOT_URL = 'http://localhost:3001/api';
 
@@ -64,4 +66,15 @@ export function deleteTask(id, callback) {
     })
     .then(() => callback())
   }
+}
+
+export function fetchTypes() {
+  return (dispatch) => {
+    dispatch({type: FETCH_TYPES});
+    fetch(`${ROOT_URL}/types`)
+      .then(response => response.json())
+      .then(json => {
+        dispatch({ type: RECEIVED_TYPES, payload: json })
+      })
+  };
 }
