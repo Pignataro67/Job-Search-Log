@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Calendar from 'react-calendar';
 import { createTask, fetchTypes } from '../actions';
-import { fetchTypes } from '../actions';
 
 class TasksForm extends Component {
   constructor(){
@@ -14,7 +15,7 @@ class TasksForm extends Component {
       name: '',
       description: '',
       notes: '',
-      date: '',
+      date: newDate(),
       type_id: ''
     }
   }
@@ -30,20 +31,33 @@ class TasksForm extends Component {
     });
   }
 
-  handleOnSubmit = (e) => {
-    e.preventDefault();
-    this.props.createTask( this.state, () => {
-      this.props.history.push('/');
-    });
-    this.setState({
-      name: '',
-      description: '',
-      notes: '',
-      date: '',
-      type_id: ''
-    })
+  handleDateChange = date => {
+    this.setState({ date })
   }
+
+handleOnSubmit = (e) => {
+  e.preventDefault();
+  this.props.createTask( this.state, () => {
+    this.props.history.push('/');
+  });
+  this.setState({
+    name: '',
+    description: '',
+    notes: '',
+    date: '',
+    type_id: ''
+  })
+}
+
   render() {
+    const { types } = this.props;
+    let typesForSelect;
+    if (types.length !== 0){
+      typesForSelect = types[0].map((type, index) => {
+        return <option key={index} value={type.id}>{type.name}</option>
+      });
+    }
+    
     return (
 
       <div className="container">
@@ -76,12 +90,21 @@ class TasksForm extends Component {
             </div>
 
             <div className="form-group">
+              <Calendar
+                onChange={this.handleDateChange}
+                value={this.state.date}
+              />
+            </div>
+
+            <div className="form-group">
               <select
                 required
+                type="select"
+                name="type_id"
                 className="custom-select"
                 onChange={this.handleOnChange}>
                 <option defaultValue>Select Type</option>
-                {teachers.map(( type,index ) => <option key={ index } value={ type.id }>{ type.name }</option>)}
+                {typesForSelect}
               </select>
             </div>
 
@@ -106,4 +129,14 @@ class TasksForm extends Component {
 
 }
 
-export default TasksForm;
+const mapStateToProps = (state) => {
+  return {
+    types: state.types
+  }
+}
+  
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ fetchTypes, createTask }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TasksForm);
