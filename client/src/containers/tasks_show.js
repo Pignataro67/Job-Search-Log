@@ -37,6 +37,7 @@ class TasksShow extends Component {
         </button>
         <h3>{task.name}</h3>
         <h4>{task.description}</h4>
+        <h4>{task.type_id}</h4>
         {task.notes ?
           <div>
             <h4>Notes:</h4>

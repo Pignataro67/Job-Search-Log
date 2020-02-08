@@ -4,36 +4,37 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Calendar from 'react-calendar';
 import { createTask, fetchTypes } from '../actions';
+import Validate from 'react-validate-form';
 
 class TasksForm extends Component {
   constructor(){
     super();
 
-    this.handleOnSubmit = this.handleOnSubmit.bind(this)
-    this.handleOnChange = this.handleOnChange.bind(this)
-    this.state = {
-      name: '',
-      description: '',
-      notes: '',
-      date: newDate(),
-      type_id: ''
-    }
+  this.handleOnSubmit = this.handleOnSubmit.bind(this)
+  this.handleOnChange = this.handleOnChange.bind(this)
+  this.state = {
+    name: '',
+    description: '',
+    notes: '',
+    date: newDate(),
+    type_id: ''
   }
+}
 
-  componentDidMount() {
-    this.props.fetchTypes();
-  }
+componentDidMount() {
+  this.props.fetchTypes();
+}
 
-  handleOnChange = event => {
-    const { name, value } = event.target
-    this.setState({
-      [name]: value
-    });
-  }
+handleOnChange = event => {
+  const { name, value } = event.target
+  this.setState({
+    [name]: value
+  });
+}
 
-  handleDateChange = date => {
-    this.setState({ date })
-  }
+handleDateChange = date => {
+  this.setState({ date })
+}
 
 handleOnSubmit = (e) => {
   e.preventDefault();
@@ -119,7 +120,12 @@ handleOnSubmit = (e) => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">Save</button>
+            <button 
+              type="submit" 
+              className="btn btn-primary"
+              disables={!this.state.formValid}
+              >Save
+            </button>
             <Link to="/" className="btn btn-danger">Cancel</Link>
 
           </form>
