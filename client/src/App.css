@@ -25,6 +25,13 @@
   color: #61dafb;
 }
 
+.main-header {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,5 +42,9 @@
   }
 
   form a {
+    margin-left: 5px
+  }
+
+  a {
     margin-left: 5px
   }

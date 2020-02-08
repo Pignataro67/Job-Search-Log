@@ -6,6 +6,7 @@ import Home from './components/home';
 import TasksIndex from './containers/tasks_index';
 import TasksForm from './containers/tasks_form';
 import NavBar from './components/navbar';
+import Header from './components/header';
 import TasksShow from './containers/tasks_show';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
         </header>
         <Router>
           <div className="routes">
+            <Header />
             <NavBar />
             <Switch>
               <Route exact path="/tasks/new" component={ TasksForm } />

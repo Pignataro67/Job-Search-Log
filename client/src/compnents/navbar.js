@@ -2,25 +2,36 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () =>
-  <div className="navbar-right">
-    <div>
+  <div className="navbar">
+  
       <NavLink
         to="/"
         exact
-        className="btn btn-primary"
+        className="btn btn-info"
         activeStyle={{
           background: 'grey'
         }}
+
       >Home</NavLink>
+      
       <NavLink
-        to="/tasks/new"
+        to="/tasks"
         exact
-        className="btn btn-primary"
+        className="btn btn-info"
         activeStyle={{
-          background: 'darkblue'
+          background: 'grey'
         }}
-      >Add Task</NavLink>
-    </div>
+      >All Tasks</NavLink>
+
+      <NavLink
+      to="/tasks/new"
+      exact
+      className="btn btn-info"
+      activeStyle={{
+        background: 'grey'
+      }}
+    >Add Task</NavLink>
+    
   </div>
 
 export default NavBar;
