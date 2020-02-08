@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
+import Home from './components/home';
 import TasksIndex from './containers/tasks_index';
 import TasksForm from './containers/tasks_form';
 import NavBar from './components/navbar';
@@ -19,7 +21,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/tasks/new" component={ TasksForm } />
               <Route path="/tasks/:id" component={ TasksShow } />
-              <Route exact path="/" component={ TasksIndex } />
+              <Route exact path="/tasks" component={ TasksIndex } />
+              <Route exact path="/" component={Home} />
             </Switch>  
           </div>
         </Router>
