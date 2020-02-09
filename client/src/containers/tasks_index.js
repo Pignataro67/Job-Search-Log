@@ -12,10 +12,14 @@ class TasksIndex extends Component {
   renderTasks = () => {
     return _.map(this.props.tasks, task => {
       return (
+        <div className="container">
+
         <TaskItem
           key={task.id}
           task={task}
         />
+      <br />
+    </div>
       );
     });
   }
@@ -23,8 +27,9 @@ class TasksIndex extends Component {
   render() {
   
     return (
-      <div>
-         <h3>Tasks</h3>
+      <div className="container">
+        <h2>My Job Search Tasks</h2>
+        <br />
         <ol className="list-group">
           {this.renderTasks()}
         </ol>

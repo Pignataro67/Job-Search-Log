@@ -28,15 +28,17 @@ class TasksShow extends Component {
 
     return (
       <div>
-        <Link to="/tasks" className="btn btn-primary">Back To Index</Link>
+        <Link to="/tasks" className="btn btn-info">Back To Index</Link>
         <button
           className="btn btn-danger pull-xs-right"
           onClick={this.onDeleteClick.bind(this)}
         >
           Delete Task
         </button>
-        <h3>Name: {task.name}</h3>
-        <h4>Description: {task.description}</h4>
+        <div className="container">
+        <br />
+        <h3>{task.name}</h3>
+        <h4>{task.description}</h4>
         <h4>Date: {task.date_formatted}</h4>
         <h4>Task ID: {task.type_id}</h4>
         {task.notes ?
