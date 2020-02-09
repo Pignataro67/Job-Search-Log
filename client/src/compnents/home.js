@@ -2,12 +2,18 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className="home-page">
-      <header>
-      <h1> header inside of heading </h1>
-      </header>
-      <div className="container">
-          <h1> Home Page </h1>
+    <div className="container">
+      <h2> Job Search Task Tracker </h2>
+      <h4> Track related tasks with ease </h4>
+      <div className="home-page">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   )
