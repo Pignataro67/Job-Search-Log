@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Calendar from 'react-calendar';
 import { createTask, fetchTypes } from '../actions';
+import {formErrors} from '../components/form_errors';
 
 class TasksForm extends Component {
   constructor(){
@@ -11,12 +12,21 @@ class TasksForm extends Component {
 
   this.handleOnSubmit = this.handleOnSubmit.bind(this)
   this.handleOnChange = this.handleOnChange.bind(this)
+  this.validate = this.validate.bind(this)
+
   this.state = {
-    name: '',
-    description: '',
-    notes: '',
-    date: newDate(),
-    type_id: ''
+    task: {
+      name: '',
+      description: '',
+      notes: '',
+      date: newDate(),
+      type_id: ''
+    },
+    formErrors: {
+      name: true,
+      description: true,
+      type_id: true
+    }
   }
 }
 
@@ -25,28 +35,50 @@ componentDidMount() {
 }
 
 handleOnChange = event => {
+  console.log(event.target.value)
   const { name, value } = event.target
   this.setState({
-    [name]: value
+    task: {
+    ...this.state.task,
+    [name]: value,
+    }
   });
 }
 
 handleDateChange = date => {
-  this.setState({ date })
+  console.log(date)
+  this.setState({
+      task: {
+      ...this.state.task,
+      date: date,
+    }
+  });
+}
+
+validate = (values) => {
+const errors = {}
+return errors;
 }
 
 handleOnSubmit = (e) => {
   e.preventDefault();
   this.props.createTask( this.state, () => {
-    this.props.history.push('/');
+    this.props.history.push('/tasks');
   });
   this.setState({
-    name: '',
-    description: '',
-    notes: '',
-    date: '',
-    type_id: ''
-  })
+    task: {
+      name: '',
+      description: '',
+      notes: '',
+      date: '',
+      type_id: ''
+    },
+    formErrors: {
+      name: true,
+      description: true,
+      type_id: true
+    }
+  });
 }
 
   render() {
@@ -72,9 +104,12 @@ handleOnSubmit = (e) => {
                   name="name"
                   placeholder="Name"
                   onChange={this.handleOnChange}
-                  value={ this.state.name }
-                  required
+                  onBlur={this.validate}
+                  value={ this.state.task.name }
               />
+            </div>
+            <div className="form-errors">
+              {formErrors}
             </div>
 
             <div className="form-group">
@@ -84,15 +119,20 @@ handleOnSubmit = (e) => {
                   name="description"
                   placeholder="Description"
                   onChange={this.handleOnChange}
-                  value={ this.state.description }
-                  required
+                  onBlur={this.validate}
+                  value={ this.state.task.description }
               />
+            </div>
+            <div className="form-errors">
+              {formErrors}
             </div>
 
             <div className="form-group">
               <Calendar
                 onChange={this.handleDateChange}
-                value={this.state.date}
+                value={this.state.task.date}
+                className="form-control"
+                calendarType="US"
               />
             </div>
 
@@ -101,21 +141,23 @@ handleOnSubmit = (e) => {
                 required
                 type="select"
                 name="type_id"
-                className="custom-select"
+                className="form-control"
                 onChange={this.handleOnChange}>
-                <option defaultValue>Select Type</option>
+                <option defaultValue>Select Type.....</option>
                 {typesForSelect}
               </select>
             </div>
 
+            <div className="form-errors">
+              {formErrors}
+            </div>
             <div className="form-group">
-              <input
+              <textarea
                   className="form-control"
-                  type="textarea"
                   name="notes"
                   placeholder="Optional Notes"
                   onChange={this.handleOnChange}
-                  value={ this.state.notes }
+                  value={ this.state.task.notes }
               />
             </div>
 
