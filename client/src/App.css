@@ -14,11 +14,9 @@
 }
 
 .home-page {
-  background-image: url(https://www.123rf.com/stock-photo/job_search.html);
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url(images/jobsearch-bg.jpg) no-repeat center center fixed;
+  height: 100vh;
+  background-size: contain;
 }
 
 .App-link {
@@ -26,10 +24,7 @@
 }
 
 .main-header {
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: url(images/jobsearch-header.jpg) center;
 }
 
 @keyframes App-logo-spin {

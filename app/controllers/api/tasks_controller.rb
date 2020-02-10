@@ -8,7 +8,7 @@ class Api::TasksController < ApiController
   
   def show
     if @task
-      render json: { staus: "success", task: @task }, status: 200
+      render json: @task, status: 200
      else
       render json: { status: "error", message: "Resource not found." }, status: 404
      end
@@ -18,9 +18,9 @@ class Api::TasksController < ApiController
     @task = Task.new(task_params)
   
     if @task.save
-      render json: { status: "success", task: @task }, status: 200
+      render json: @task, status: 200
     else
-      render json: status: "error", message: @task.errors }, status: 400
+      render json: @task.errors, status: 400
     end
   end
 
