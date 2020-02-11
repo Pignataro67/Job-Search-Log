@@ -13,7 +13,7 @@ export default function(state = {}, action) {
     case RECEIVED_TASKS:
       return  _.mapKeys(action.payload, 'id')
     case CREATE_TASK:
-      return {...state, [action.payload.id]: [action.payload][0] }
+      return {...state, [action.payloadtask.id]: [action.payload.task][0] }
     case DELETE_TASK:
       return _.omit(state, action.payload)
     default:

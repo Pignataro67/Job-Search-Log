@@ -24,7 +24,6 @@ export function fetchTasks() {
 }
 
 export function createTask(values, callback) {
-  console.log(values)
   return (dispatch) => {
     fetch(`${ROOT_URL}/tasks`, {
       method: 'POST',
@@ -35,8 +34,8 @@ export function createTask(values, callback) {
       body: JSON.stringify(values),
     })
       .then(response => response.json())
-        .then(json => { 
-          dispatch({ type: CREATE_TASK, payload: json })
+      .then(json => { 
+        dispatch({ type: CREATE_TASK, payload: json })
     })
     .then(() => callback())
   };
