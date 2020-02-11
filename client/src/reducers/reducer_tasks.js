@@ -7,7 +7,6 @@ export default function(state = {}, action) {
     case FETCH_TASK:
       return { ...state }
     case RECEIVED_TASK:
-    console.log(action.payload)
       return { ...state, [action.payload.id]: [action.payload][0]}
     case FETCH_TASKS:
       return {...state}  
