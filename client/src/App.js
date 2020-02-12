@@ -8,8 +8,13 @@ import TasksForm from './containers/tasks_form';
 import NavBar from './components/navbar';
 import Header from './components/header';
 import TasksShow from './containers/tasks_show';
+import HomeNavBar from './components/home_nav_bar';
 
 class App extends Component {
+  showHeader = () => {
+    return window.location.pathname !== '/'
+  }
+
   render() {
     return (
       <div className="app">
@@ -18,9 +23,12 @@ class App extends Component {
         </header>
         <Router>
           <div className="routes">
-            <Header />
-            <NavBar />
             <Switch>
+              <Route exact path="/" component={HomeNavBar} />
+              <Route path="/" component={NavBar} />
+            </Switch>
+            <Switch>
+              <Route exact path="/" component={Home} />
               <Route exact path="/tasks/new" component={ TasksForm } />
               <Route path="/tasks/:id" component={ TasksShow } />
               <Route exact path="/tasks" component={ TasksIndex } />

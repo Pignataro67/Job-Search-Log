@@ -2,7 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () =>
-  <div className="navbar">
+  <div>
+    <header className="main-header">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    </header>
+    <div className="navbar">
   
       <NavLink
         to="/"
@@ -32,6 +42,7 @@ const NavBar = () =>
       }}
     >Add Task</NavLink>
     
+    </div>
   </div>
 
 export default NavBar;

@@ -15,8 +15,8 @@
 
 .home-page {
   background-image: url(images/jobsearch-bg.jpg) no-repeat center center fixed;
-  height: 100vh;
-  background-size: contain;
+  height: 90vh;
+  background-size: cover;
 }
 
 .App-link {

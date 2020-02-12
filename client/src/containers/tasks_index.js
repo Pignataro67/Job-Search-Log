@@ -12,14 +12,10 @@ class TasksIndex extends Component {
   renderTasks = () => {
     return _.map(this.props.tasks, task => {
       return (
-        <div className="container">
-
         <TaskItem
           key={task.id}
           task={task}
         />
-      <br />
-    </div>
       );
     });
   }
