@@ -11,9 +11,6 @@ import TasksShow from './containers/tasks_show';
 import HomeNavBar from './components/home_nav_bar';
 
 class App extends Component {
-  showHeader = () => {
-    return window.location.pathname !== '/'
-  }
 
   render() {
     return (

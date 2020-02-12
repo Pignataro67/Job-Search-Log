@@ -75,10 +75,15 @@ handleOnSubmit = (e) => {
 
       <div className="container">
         <br />
-        <h3>Add a new task</h3>
+        <div className="container">
+        <h3>~Use this form to add a new task~</h3>
+        </div>
+        <br /><br />
           <form className="form-group" onSubmit={this.handleOnSubmit}>
 
-            <div className="form-group">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">Name Your Task</label>
+                <div className="col-sm-6">
               <input
                   className="form-control"
                   type="text"
@@ -89,8 +94,11 @@ handleOnSubmit = (e) => {
                   required
               />
             </div>
-           
-            <div className="form-group">
+          </div>
+
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">Give a Brief Description</label>
+                <div className="col-sm-6">
               <input
                   className="form-control"
                   type="text"
@@ -101,8 +109,13 @@ handleOnSubmit = (e) => {
                   required
               />
             </div>
-
-            <div className="form-group">
+          </div>
+          
+          <div className="form-group row">
+            <label className="col-sm-3 col-form-label">When 
+              did you complete this task or when is this task scheduled for?
+            </label>
+            <div className="col-sm-7">
               <Calendar
                 onChange={this.handleDateChange}
                 value={this.state.date}
@@ -110,8 +123,13 @@ handleOnSubmit = (e) => {
                 calendarType="US"
               />
             </div>
+          </div>
+          <br />
 
-            <div className="form-group">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">What
+                type of task is this?</label>
+              <div className="col-sm-8">
               <select
                 required
                 type="select"
@@ -122,8 +140,12 @@ handleOnSubmit = (e) => {
                 {typesForSelect}
               </select>
             </div>
+          </div>
 
-            <div className="form-group">
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">Write 
+                any additional information here</label>
+              <div className="col-sm-6">
               <textarea
                   className="form-control"
                   name="notes"
@@ -132,14 +154,21 @@ handleOnSubmit = (e) => {
                   value={ this.state.notes }
               />
             </div>
-
-            <button 
-              type="submit" 
-              className="btn btn-primary"
-              >Save
-            </button>
-            <Link to="/" className="btn btn-danger">Cancel</Link>
-
+          </div>
+          <br />
+          <div className="form-group row">
+              <div className="col-sm-5">
+                <button
+                  type="submit"
+                  className="form-control btn btn-primary"
+                  >Save
+                </button>
+              </div>
+              <div className="col-sm-5">
+                <Link to="/" className="form-control btn btn-danger">Cancel</Link>
+              </div>
+            </div>
+            
           </form>
       </div>
     );
