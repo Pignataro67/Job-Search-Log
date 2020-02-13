@@ -9,15 +9,13 @@ import NavBar from './components/navbar';
 import Header from './components/header';
 import TasksShow from './containers/tasks_show';
 import HomeNavBar from './components/home_nav_bar';
+import About from './components/about';
 
 class App extends Component {
 
   render() {
     return (
       <div className="app">
-        <header className="App-header">
-          <h1 className="App-title">Job Search Task Tracker</h1>
-        </header>
         <Router>
           <div className="routes">
             <Switch>
@@ -26,6 +24,7 @@ class App extends Component {
             </Switch>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
               <Route exact path="/tasks/new" component={ TasksForm } />
               <Route path="/tasks/:id" component={ TasksShow } />
               <Route exact path="/tasks" component={ TasksIndex } />
