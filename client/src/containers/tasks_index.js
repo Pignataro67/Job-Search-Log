@@ -24,11 +24,11 @@ class TasksIndex extends Component {
   
     return (
       <div className="container">
-        <h2>My Job Search Tasks</h2>
-        <br />
-        <ol className="list-group">
-          {this.renderTasks()}
-        </ol>
+        <div className="row index-div">
+          <div className="">
+            {this.renderTasks()}
+          </div>
+        </div>
       </div>	     
     );	    
   };	  
