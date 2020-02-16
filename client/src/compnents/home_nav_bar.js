@@ -31,7 +31,7 @@ const HomeNavBar = ({ showHeader }) =>
       activeStyle={{
         background: 'grey'
       }}
-    >All Tasks</NavLink>
+    >My Tasks</NavLink>
 
     <NavLink
       to="/tasks/new"
