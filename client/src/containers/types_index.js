@@ -10,18 +10,21 @@ class TypesIndex extends Component {
 
   renderTypes = () => {
     const { types } = this.props
-    return types.map(type => {
-      <TypeItem key={type.id} type={type} />
-    })
+    console.log(types[0])
+    if (types.length !== 0) {
+      return types[0].map(type => {
+        return <TypeItem key={type.id} type={type} />
+      })
+    } else {
+      return <div> ...Loading </div>
+    }
   }
 
   render() {
 
     return (
-      <div>
-        <ol>
-          {this.renderTypes()}
-        </ol>
+      <div id="accordion">
+        {this.renderTypes()}
       </div>
     );
   }

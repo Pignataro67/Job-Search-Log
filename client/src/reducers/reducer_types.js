@@ -5,7 +5,6 @@ export default function(state = [], action) {
     case FETCH_TYPES:
       return [ ...state ]
     case RECEIVED_TYPES:
-    console.log(action.payload)
       return [...state, action.payload]
     default:
       return state;
