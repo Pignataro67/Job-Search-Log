@@ -73,3 +73,12 @@ a {
   text-shadow: 1px 1px #00ccff;
   font-size: 2em;
 }
+
+.type-items button{
+  font-size: 20px;
+  padding: 10px;
+
+}
+.type-description{
+  font-size: 1em;
+}

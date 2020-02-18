@@ -23,7 +23,7 @@ class TypeItem extends Component {
           <button className="btn btn-link" onClick={this.onClick}>{type.id}. {type.name}</button>
         </div>
         <div className="type-description" style={showHide}>
-          {type.id}
+          {type.description}
         </div>
       </div>
     )
