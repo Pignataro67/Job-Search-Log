@@ -23,8 +23,14 @@ class TypesIndex extends Component {
   render() {
 
     return (
-      <div id="accordion">
-        {this.renderTypes()}
+      <div className="">
+        <div className="container">
+          <h4 className="types-heading">Job Search Activity Types</h4>
+          <h6>Click on a type to learn more</h6>
+        </div>
+        <div>
+          {this.renderTypes()}
+        </div>
       </div>
     );
   }
