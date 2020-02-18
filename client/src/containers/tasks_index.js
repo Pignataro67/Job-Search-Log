@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { fetchTasks } from '../actions/index';
-import TaskItemIndex from '../components/task_item';
+import TaskItemIndex from '../components/task_item_index';
 
 class TasksIndex extends Component {
   componentDidMount = () => {
@@ -12,7 +12,7 @@ class TasksIndex extends Component {
   renderTasks = () => {
     return _.map(this.props.tasks, task => {
       return (
-        <TaskItem
+        <TaskItemIndex
           key={task.id}
           task={task}
         />

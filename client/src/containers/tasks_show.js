@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchTask, deleteTask } from '../actions';
-import { Link } from 'react-router-dom';
+import TaskItemShow from '../components/task_item_show';
 
 class TasksShow extends Component {
 
@@ -12,7 +12,7 @@ class TasksShow extends Component {
     }
   }
   
-  onDeleteClick() {
+  onDeleteClick = () => {
     const { id } = this.props.match.params
     this.props.deleteTask(id, () => { 
         this.props.history.push('/tasks');
@@ -28,29 +28,7 @@ class TasksShow extends Component {
 
     return (
       <div>
-        <br/>
-        <Link to="/tasks" className="btn btn-info">Back To Index</Link>
-        <button
-          className="btn btn-danger pull-xs-right"
-          onClick={this.onDeleteClick.bind(this)}
-        >
-          Delete Task
-        </button>
-        <div className="container">
-        <br />
-        <h3>{task.name}</h3>
-        <h4>{task.description}</h4>
-        <h4>Date: {task.date_formatted}</h4>
-        <h4>Task Type: {task.type.name}</h4>
-        {task.notes ?
-          <div>
-            <h4>Notes:</h4>
-            <h5>{task.notes}</h5>
-          </div>
-          :
-          <div></div>
-        }
-      </div>
+        <TaskItemShow onClick={this.onDeleteClick} key={task.id} task={task} />
     </div>
     );
   }
