@@ -10,7 +10,6 @@ class TypesIndex extends Component {
 
   renderTypes = () => {
     const { types } = this.props
-    console.log(types[0])
     if (types.length !== 0) {
       return types[0].map(type => {
         return <TypeItem key={type.id} type={type} />
