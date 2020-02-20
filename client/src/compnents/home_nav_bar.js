@@ -25,6 +25,15 @@ const HomeNavBar = ({ showHeader }) =>
     >About</NavLink>
     
     <NavLink
+      to="/types"
+      exact
+      className="btn btn-info"
+      activeStyle={{
+        background: 'grey'
+      }}
+    >Task Types</NavLink>
+    
+    <NavLink
       to="/tasks"
       exact
       className="btn btn-info"
@@ -36,7 +45,7 @@ const HomeNavBar = ({ showHeader }) =>
     <NavLink
       to="/tasks/new"
       exact
-      className="btn btn-info"
+      className="btn btn-info pull-xs-right"
       activeStyle={{
         background: 'grey'
       }}
