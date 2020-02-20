@@ -82,4 +82,20 @@ a {
 }
 .type-description{
   font-size: 1em;
+  border: 50px;
+  border-color: grey;
+}
+
+.task-item-container{
+  height: 65vh;
+}
+.task-item-card{
+  background-color: lightgrey ;
+  text-align: center;
+  margin: 50px 70px;;
+  height: 60%
+}
+
+.task-item-card a {
+  margin-left: 0;
 }
