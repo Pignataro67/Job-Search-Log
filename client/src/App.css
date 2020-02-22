@@ -99,3 +99,16 @@ a {
 .task-item-card a {
   margin-left: 0;
 }
+
+#task-item-title {
+  text-decoration: underline;
+}
+
+
+#type-link {
+  font-size: 15px;
+}
+
+.footer {
+  text-align: right;
+}
